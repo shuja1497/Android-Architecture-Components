@@ -25,12 +25,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:onClick="onClick"
         android:text="Insert user"
         android:textAllCaps="false"
         app:layout_constraintStart_toStartOf="@+id/editText_user_name"
-        app:layout_constraintTop_toBottomOf="@+id/editText_id"
-        android:onClick="onClick"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/editText_id" />
 
     <EditText
         android:id="@+id/editText_id"
@@ -59,12 +58,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:onClick="onClick"
         android:text="Delete user"
         android:textAllCaps="false"
         app:layout_constraintStart_toStartOf="@+id/editText_id_delete"
-        app:layout_constraintTop_toBottomOf="@+id/editText_id_delete"
-        android:onClick="onClick"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/editText_id_delete" />
 
     <Button
         android:id="@+id/button_show_all"
@@ -72,13 +70,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="30dp"
+        android:onClick="onClick"
         android:text="Show All"
         app:layout_constraintEnd_toStartOf="@+id/button_delete_all"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_delete"
-        android:onClick="onClick"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/button_delete" />
 
     <Button
         android:id="@+id/button_delete_all"
@@ -86,11 +83,33 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginTop="30dp"
+        android:onClick="onClick"
         android:text="Delete All"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/button_show_all"
-        app:layout_constraintTop_toBottomOf="@+id/button_delete"
-        android:onClick="onClick"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/button_delete" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_show_all" />
+
+    <Button
+        android:id="@+id/button_update_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Update User"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_id"
+        android:onClick="onClick"/>
 </android.support.constraint.ConstraintLayout>

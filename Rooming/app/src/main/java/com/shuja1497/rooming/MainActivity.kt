@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
@@ -41,12 +42,17 @@ class MainActivity : AppCompatActivity() {
                 userDao.deleteUser(user)
             }
 
+            R.id.button_update_user -> {
+                userDao.updateUser(User(editText_user_name.text.toString(), editText_id.text.toString().toInt()))
+            }
+
             R.id.button_delete_all -> {
                 userDao.deleteAllUser()
             }
 
             R.id.button_show_all -> {
-                userDao.getAllUsers()
+                val allUsers = userDao.getAllUsers()
+                textView.text = allUsers.toString()
             }
         }
     }

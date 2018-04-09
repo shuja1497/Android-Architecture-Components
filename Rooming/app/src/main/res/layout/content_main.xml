@@ -8,13 +8,89 @@
     tools:context=".MainActivity"
     tools:showIn="@layout/activity_main">
 
-    <TextView
+    <EditText
+        android:id="@+id/editText_user_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Name"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/button_insert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Insert user"
+        android:textAllCaps="false"
+        app:layout_constraintStart_toStartOf="@+id/editText_user_name"
+        app:layout_constraintTop_toBottomOf="@+id/editText_id"
+        android:onClick="onClick"
+        />
+
+    <EditText
+        android:id="@+id/editText_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="ID"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/editText_user_name"
+        app:layout_constraintTop_toBottomOf="@+id/editText_user_name" />
+
+    <EditText
+        android:id="@+id/editText_id_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:ems="10"
+        android:hint="ID"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/button_insert"
+        app:layout_constraintTop_toBottomOf="@+id/button_insert" />
+
+    <Button
+        android:id="@+id/button_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Delete user"
+        android:textAllCaps="false"
+        app:layout_constraintStart_toStartOf="@+id/editText_id_delete"
+        app:layout_constraintTop_toBottomOf="@+id/editText_id_delete"
+        android:onClick="onClick"
+        />
+
+    <Button
+        android:id="@+id/button_show_all"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="30dp"
+        android:text="Show All"
+        app:layout_constraintEnd_toStartOf="@+id/button_delete_all"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_delete"
+        android:onClick="onClick"
+        />
+
+    <Button
+        android:id="@+id/button_delete_all"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:text="Delete All"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/button_show_all"
+        app:layout_constraintTop_toBottomOf="@+id/button_delete"
+        android:onClick="onClick"
+        />
 </android.support.constraint.ConstraintLayout>

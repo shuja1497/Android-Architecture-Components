@@ -1,11 +1,9 @@
 package com.shuja1497.rooming
 
-import android.arch.persistence.room.Delete
-import android.arch.persistence.room.Insert
+import android.arch.persistence.room.*
 import android.arch.persistence.room.OnConflictStrategy.REPLACE
-import android.arch.persistence.room.Query
-import android.arch.persistence.room.Update
 
+@Dao
 interface UserDao {
 
     @Query("select * from user")
@@ -13,6 +11,9 @@ interface UserDao {
 
     @Query("select * from user where id = :userId")
     fun getUser(userId: Long): User
+
+    @Query("delete from user")
+    fun deleteAllUser()
 
     @Insert(onConflict = REPLACE)
     fun insertUser(user: User)
@@ -22,4 +23,5 @@ interface UserDao {
 
     @Update(onConflict = REPLACE)
     fun updateUser(user: User)
+
 }

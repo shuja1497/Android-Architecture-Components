@@ -10,6 +10,11 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
+    val appDatabase: AppDatabase? by lazy {
+        AppDatabase.getInstance(this)
+    }
+
+    private lateinit var userDao : UserDao
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -19,6 +24,8 @@ class MainActivity : AppCompatActivity() {
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
         }
+        userDao = appDatabase!!.userDao()
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

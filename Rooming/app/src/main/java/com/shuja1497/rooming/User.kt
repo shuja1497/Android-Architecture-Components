@@ -5,4 +5,4 @@ import android.arch.persistence.room.Entity
 import android.arch.persistence.room.PrimaryKey
 
 @Entity(tableName = "user")
-data class User(var username:String, @PrimaryKey()var id: Long? = 0)
+data class User(var username:String, @PrimaryKey()var id: Int = 0)

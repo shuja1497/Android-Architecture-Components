@@ -8,6 +8,7 @@ import android.view.MenuItem
 import android.view.View
 
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.content_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -29,7 +30,24 @@ class MainActivity : AppCompatActivity() {
 
     }
     fun onClick(view: View?){
+        when(view?.id) {
 
+            R.id.button_insert -> {
+                userDao.insertUser(User(editText_user_name.text.toString(), editText_id.text.toString().toInt()))
+            }
+
+            R.id.button_delete -> {
+                userDao.deleteUser(editText_id_delete.text.toString().toInt())
+            }
+
+            R.id.button_delete_all -> {
+                userDao.deleteAllUser()
+            }
+
+            R.id.button_show_all -> {
+                userDao.getAllUsers()
+            }
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

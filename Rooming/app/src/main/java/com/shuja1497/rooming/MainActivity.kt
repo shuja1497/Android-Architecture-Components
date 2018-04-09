@@ -37,7 +37,8 @@ class MainActivity : AppCompatActivity() {
             }
 
             R.id.button_delete -> {
-                userDao.deleteUser(editText_id_delete.text.toString().toInt())
+                val user = userDao.getUser(editText_id_delete.text.toString().toInt())
+                userDao.deleteUser(user)
             }
 
             R.id.button_delete_all -> {

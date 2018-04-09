@@ -10,7 +10,7 @@ interface UserDao {
     fun getAllUsers(): List<User>
 
     @Query("select * from user where id = :userId")
-    fun getUser(userId: Long): User
+    fun getUser(userId: Int): User
 
     @Query("delete from user")
     fun deleteAllUser()
@@ -19,7 +19,7 @@ interface UserDao {
     fun insertUser(user: User)
 
     @Delete
-    fun deleteUser(userID: Int)
+    fun deleteUser(user: User)
 
     @Update(onConflict = REPLACE)
     fun updateUser(user: User)

@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         when(view?.id) {
 
             R.id.button_insert -> {
-                userDao.insertUser(User(editText_user_name.text.toString(), editText_id.text.toString().toInt()))
+                userDao.insertUser(User(editText_user_name.text.toString(), editText_id.text.toString().toInt(),""))
             }
 
             R.id.button_delete -> {
@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             R.id.button_update_user -> {
-                userDao.updateUser(User(editText_user_name.text.toString(), editText_id.text.toString().toInt()))
+                userDao.updateUser(User(editText_user_name.text.toString(), editText_id.text.toString().toInt(), ""))
             }
 
             R.id.button_delete_all -> {

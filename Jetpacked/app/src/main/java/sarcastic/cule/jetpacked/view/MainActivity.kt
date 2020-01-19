@@ -1,7 +1,8 @@
-package sarcastic.cule.jetpacked
+package sarcastic.cule.jetpacked.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import sarcastic.cule.jetpacked.R
 
 class MainActivity : AppCompatActivity() {
 

@@ -16,6 +16,8 @@ import sarcastic.cule.jetpacked.R
  */
 class DetailFragment : Fragment() {
 
+    private var uuid = 0
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -27,11 +29,10 @@ class DetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        buttonList.setOnClickListener {
-            val action = DetailFragmentDirections.actionDetailFragmentToListFragment()
-            Navigation.findNavController(it).navigate(action)
+        arguments?.let {
+            uuid = DetailFragmentArgs.fromBundle(it).uuid
         }
-    }
 
+    }
 
 }

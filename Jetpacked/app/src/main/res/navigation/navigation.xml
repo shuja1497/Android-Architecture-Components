@@ -10,7 +10,9 @@
         android:label="ListFragment">
         <action
             android:id="@+id/action_listFragment_to_detailFragment"
-            app:destination="@id/detailFragment" />
+            app:destination="@id/detailFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
         <deepLink
             android:id="@+id/deepLink"
             app:uri="jetpacked/listFragment" />
@@ -25,7 +27,13 @@
             app:uri="jetpacked/detail" />
         <action
             android:id="@+id/action_detailFragment_to_listFragment"
-            app:destination="@id/listFragment" />
+            app:destination="@id/listFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+        <argument
+            android:name="uuid"
+            app:argType="integer"
+            android:defaultValue="0" />
     </fragment>
 
 </navigation>

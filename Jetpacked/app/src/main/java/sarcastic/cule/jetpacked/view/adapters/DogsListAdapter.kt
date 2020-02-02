@@ -1,4 +1,4 @@
-package sarcastic.cule.jetpacked.view.Adapters
+package sarcastic.cule.jetpacked.view.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,7 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.list_item.view.*
 import sarcastic.cule.jetpacked.R
 import sarcastic.cule.jetpacked.model.DogBreed
-import sarcastic.cule.jetpacked.view.DetailFragmentDirections
+import sarcastic.cule.jetpacked.utils.getProgressDrawable
+import sarcastic.cule.jetpacked.utils.loadImage
 import sarcastic.cule.jetpacked.view.ListFragmentDirections
 
 class DogsListAdapter(private val dogsList: ArrayList<DogBreed>) :
@@ -33,6 +34,7 @@ class DogsListAdapter(private val dogsList: ArrayList<DogBreed>) :
 
         holder.view.title.text = dogsList[position].breed
         holder.view.subtitle.text = dogsList[position].lifespan
+        holder.view.image.loadImage(dogsList[position].imageUrl, getProgressDrawable(holder.view.context))
         holder.view.setOnClickListener {
             Navigation.findNavController(it).navigate(ListFragmentDirections.actionListFragmentToDetailFragment())
         }

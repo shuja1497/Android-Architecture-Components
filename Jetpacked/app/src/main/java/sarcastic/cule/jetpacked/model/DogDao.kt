@@ -15,7 +15,7 @@ interface DogDao {
     suspend fun getAllDogs() : List<DogBreed>
 
     @Query("select * from dogbreed where uuid = :dogId")
-    suspend fun getDog(dogId: Int)
+    suspend fun getDog(dogId: Int) : DogBreed
 
     @Query("delete from dogbreed")
     suspend fun deleteAllDogs()

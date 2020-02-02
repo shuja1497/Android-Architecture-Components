@@ -47,6 +47,15 @@ class ListFragment : Fragment() {
             layoutManager = LinearLayoutManager(context)
             adapter = listAdapter
         }
+
+        refresh_layout.setOnRefreshListener {
+            list.visibility = View.GONE
+            loader.visibility = View.GONE
+            error.visibility = View.GONE
+            refresh_layout.isRefreshing = false
+            viewModel.refreshList()
+        }
+
         observeViewModel()
     }
 

@@ -19,7 +19,7 @@ class ListViewModel : ViewModel() {
 
         dogs.value = dogDummyList
         loadError.value = false
-        loading.value = true
+        loading.value = false
 
     }
 

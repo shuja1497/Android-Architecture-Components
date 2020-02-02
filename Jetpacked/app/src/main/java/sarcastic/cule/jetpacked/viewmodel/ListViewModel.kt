@@ -1,6 +1,7 @@
 package sarcastic.cule.jetpacked.viewmodel
 
 import android.app.Application
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -19,13 +20,36 @@ class ListViewModel(application: Application) : BaseViewModel(application) {
     private val dogsApiService = DogsApiService()
     private val disposable = CompositeDisposable()
     private val sharedPreferenceHelper = SharedPreferenceHelper(getApplication())
+    private val refreshTime = 10 * 60 * 1000 * 1000 * 1000L
 
     val dogs = MutableLiveData<List<DogBreed>>()
     val loadError = MutableLiveData<Boolean>()
     val loading = MutableLiveData<Boolean>()
 
     fun refreshList() {
+
+        val updateTime = sharedPreferenceHelper.getUpdateTime()
+
+        if (updateTime != null && updateTime != 0L && (System.nanoTime() - updateTime) < refreshTime) {
+            fetchFromDatabase()
+        } else {
+            fetchFromRemote()
+        }
+    }
+
+    fun refreshByPassCache() {
         fetchFromRemote()
+    }
+
+    private fun fetchFromDatabase() {
+
+        loading.value = true
+
+        launch {
+            val dogList = DogDatabase(getApplication()).dogDao().getAllDogs()
+            dogsRetrieved(dogList)
+            Toast.makeText(getApplication(), "Fetched from database", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun fetchFromRemote() {
@@ -39,6 +63,7 @@ class ListViewModel(application: Application) : BaseViewModel(application) {
                 .subscribeWith(object : DisposableSingleObserver<List<DogBreed>>() {
                     override fun onSuccess(dogsList: List<DogBreed>) {
                         storeDogsLocally(dogsList)
+                        Toast.makeText(getApplication(), "Fetched from endpoint", Toast.LENGTH_SHORT).show()
                     }
 
                     override fun onError(e: Throwable) {

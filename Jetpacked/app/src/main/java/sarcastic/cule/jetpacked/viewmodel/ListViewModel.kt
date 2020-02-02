@@ -12,11 +12,13 @@ import kotlinx.coroutines.launch
 import sarcastic.cule.jetpacked.model.DogBreed
 import sarcastic.cule.jetpacked.model.DogDatabase
 import sarcastic.cule.jetpacked.model.DogsApiService
+import sarcastic.cule.jetpacked.utils.SharedPreferenceHelper
 
 class ListViewModel(application: Application) : BaseViewModel(application) {
 
     private val dogsApiService = DogsApiService()
     private val disposable = CompositeDisposable()
+    private val sharedPreferenceHelper = SharedPreferenceHelper(getApplication())
 
     val dogs = MutableLiveData<List<DogBreed>>()
     val loadError = MutableLiveData<Boolean>()
@@ -64,6 +66,8 @@ class ListViewModel(application: Application) : BaseViewModel(application) {
             }
             dogsRetrieved(list)
         }
+
+        sharedPreferenceHelper.saveUpdateTime(System.nanoTime())
     }
 
     private fun dogsRetrieved(dogsList: List<DogBreed>) {

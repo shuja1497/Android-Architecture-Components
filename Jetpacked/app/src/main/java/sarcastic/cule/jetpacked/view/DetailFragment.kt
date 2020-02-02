@@ -14,6 +14,8 @@ import kotlinx.android.synthetic.main.fragment_detail.*
 import kotlinx.android.synthetic.main.fragment_detail.view.*
 
 import sarcastic.cule.jetpacked.R
+import sarcastic.cule.jetpacked.utils.getProgressDrawable
+import sarcastic.cule.jetpacked.utils.loadImage
 import sarcastic.cule.jetpacked.viewmodel.DetailViewModel
 
 /**
@@ -40,7 +42,7 @@ class DetailFragment : Fragment() {
         }
 
         detailViewModel = ViewModelProviders.of(this).get(DetailViewModel::class.java)
-        detailViewModel.getDogBreed()
+        detailViewModel.getDogBreed(uuid)
 
         observeDetailedViewModel()
 
@@ -48,13 +50,16 @@ class DetailFragment : Fragment() {
 
     private fun observeDetailedViewModel() {
 
-        detailViewModel.dogBreed.observe(this, Observer {
+        detailViewModel.dogBreed.observe(this, Observer {dogBreed->
 
-            it?.let { dog ->
+            dogBreed?.let { dog ->
                 name.text = dog.breed
                 lifespan.text = dog.lifespan
                 temperament.text = dog.temperament
                 purpose.text = dog.bredFor
+                context?.let {
+                    image.loadImage(dog.imageUrl, getProgressDrawable(it))
+                }
             }
         })
     }

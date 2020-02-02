@@ -36,7 +36,9 @@ class DogsListAdapter(private val dogsList: ArrayList<DogBreed>) :
         holder.view.subtitle.text = dogsList[position].lifespan
         holder.view.image.loadImage(dogsList[position].imageUrl, getProgressDrawable(holder.view.context))
         holder.view.setOnClickListener {
-            Navigation.findNavController(it).navigate(ListFragmentDirections.actionListFragmentToDetailFragment())
+            val action = ListFragmentDirections.actionListFragmentToDetailFragment()
+            action.uuid = dogsList[position].uuid
+            Navigation.findNavController(it).navigate(action)
         }
     }
 

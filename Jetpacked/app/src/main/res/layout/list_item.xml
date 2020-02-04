@@ -5,12 +5,24 @@
         <variable
             name="dog"
             type="sarcastic.cule.jetpacked.model.DogBreed" />
+
+        <variable
+            name="listener"
+            type="sarcastic.cule.jetpacked.view.DogClickListener" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="125dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:onClick="@{listener::onDogClick}">
+
+        <TextView
+            android:id="@+id/dogId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(dog.uuid)}"
+            android:visibility="gone"/>
 
         <ImageView
             android:id="@+id/image"

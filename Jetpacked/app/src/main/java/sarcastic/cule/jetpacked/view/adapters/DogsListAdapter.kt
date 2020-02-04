@@ -12,10 +12,11 @@ import sarcastic.cule.jetpacked.databinding.ListItemBinding
 import sarcastic.cule.jetpacked.model.DogBreed
 import sarcastic.cule.jetpacked.utils.getProgressDrawable
 import sarcastic.cule.jetpacked.utils.loadImage
+import sarcastic.cule.jetpacked.view.DogClickListener
 import sarcastic.cule.jetpacked.view.ListFragmentDirections
 
 class DogsListAdapter(private val dogsList: ArrayList<DogBreed>) :
-    RecyclerView.Adapter<DogsListAdapter.DogViewHolder>() {
+    RecyclerView.Adapter<DogsListAdapter.DogViewHolder>(), DogClickListener {
 
     fun updateDogList(newDogsList: List<DogBreed>) {
         dogsList.clear()
@@ -34,15 +35,15 @@ class DogsListAdapter(private val dogsList: ArrayList<DogBreed>) :
 
     override fun onBindViewHolder(holder: DogViewHolder, position: Int) {
 
+        // attaching variables
         holder.view.dog = dogsList[position]
-//        holder.view.title.text = dogsList[position].breed
-//        holder.view.subtitle.text = dogsList[position].lifespan
-//        holder.view.image.loadImage(dogsList[position].imageUrl, getProgressDrawable(holder.view.context))
-//        holder.view.setOnClickListener {
-//            val action = ListFragmentDirections.actionListFragmentToDetailFragment()
-//            action.uuid = dogsList[position].uuid
-//            Navigation.findNavController(it).navigate(action)
-//        }
+        holder.view.listener = this
+    }
+
+    override fun onDogClick(v: View) {
+        val action = ListFragmentDirections.actionListFragmentToDetailFragment()
+        action.uuid = v.dogId.text.toString().toInt()
+        Navigation.findNavController(v).navigate(action)
     }
 
     class DogViewHolder(val view: ListItemBinding) : RecyclerView.ViewHolder(view.root)

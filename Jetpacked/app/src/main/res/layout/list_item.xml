@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="dog"
+            type="sarcastic.cule.jetpacked.model.DogBreed" />
+    </data>
+
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="125dp"
@@ -27,12 +33,14 @@
                 android:id="@+id/title"
                 tools:text="Title"
                 style="@style/TextTitle"
+                android:text="@{dog.breed}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
             <TextView
                 android:id="@+id/subtitle"
                 tools:text="Sub Title"
+                android:text="@{dog.lifespan}"
                 style="@style/TextSubTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>

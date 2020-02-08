@@ -3,9 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="dog"
+            type="sarcastic.cule.jetpacked.model.DogBreed" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
         tools:context=".view.DetailFragment">
 
 
@@ -13,6 +21,8 @@
             android:id="@+id/image"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:imageUrl="@{dog.imageUrl}"
             android:minHeight="200dp"
             android:scaleType="fitCenter"
             app:layout_constraintEnd_toEndOf="parent"
@@ -23,43 +33,55 @@
         <TextView
             android:id="@+id/name"
             style="@style/TextTitle"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
+            android:gravity="center_horizontal"
+            android:setText="@{dog.breed}"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/image"
             tools:text="Name" />
 
         <TextView
             android:id="@+id/purpose"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
+            android:gravity="center_horizontal"
+            android:setText="@{dog.bredFor}"
             android:textAppearance="@style/TextSubTitle"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/name"
             tools:text="Purpose" />
 
         <TextView
             android:id="@+id/temperament"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
+            android:gravity="center_horizontal"
+            android:setText="@{dog.temperament}"
             android:textAppearance="@style/TextSubTitle"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/purpose"
             tools:text="Temperament" />
 
         <TextView
             android:id="@+id/lifespan"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
+            android:gravity="center_horizontal"
+            android:setText="@{dog.lifespan}"
             android:textAppearance="@style/TextSubTitle"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/temperament"
             tools:text="LifeSpan" />

@@ -16,6 +16,9 @@
         <deepLink
             android:id="@+id/deepLink"
             app:uri="jetpacked/listFragment" />
+        <action
+            android:id="@+id/action_listFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
 
     <fragment
@@ -35,5 +38,10 @@
             app:argType="integer"
             android:defaultValue="0" />
     </fragment>
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="sarcastic.cule.jetpacked.view.SettingsFragment"
+        android:label="SettingsFragment" />
 
 </navigation>

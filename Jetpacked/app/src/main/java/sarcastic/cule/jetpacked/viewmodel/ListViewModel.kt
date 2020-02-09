@@ -15,13 +15,14 @@ import sarcastic.cule.jetpacked.model.DogDatabase
 import sarcastic.cule.jetpacked.model.DogsApiService
 import sarcastic.cule.jetpacked.utils.NotificationHelper
 import sarcastic.cule.jetpacked.utils.SharedPreferenceHelper
+import java.lang.NumberFormatException
 
 class ListViewModel(application: Application) : BaseViewModel(application) {
 
     private val dogsApiService = DogsApiService()
     private val disposable = CompositeDisposable()
     private val sharedPreferenceHelper = SharedPreferenceHelper(getApplication())
-    private val refreshTime = 10 * 60 * 1000 * 1000 * 1000L
+    private var refreshTime = 10 * 60 * 1000 * 1000 * 1000L
 
     val dogs = MutableLiveData<List<DogBreed>>()
     val loadError = MutableLiveData<Boolean>()
@@ -29,6 +30,7 @@ class ListViewModel(application: Application) : BaseViewModel(application) {
 
     fun refreshList() {
 
+        checkForCacheDuration()
         val updateTime = sharedPreferenceHelper.getUpdateTime()
 
         if (updateTime != null && updateTime != 0L && (System.nanoTime() - updateTime) < refreshTime) {
@@ -36,6 +38,19 @@ class ListViewModel(application: Application) : BaseViewModel(application) {
         } else {
             fetchFromRemote()
         }
+    }
+
+    private fun checkForCacheDuration() {
+
+        val prefCacheDuration = sharedPreferenceHelper.getCacheDuration()
+
+        try {
+            val cachePreferenceInt = prefCacheDuration?.toInt() ?: 5 * 60
+            refreshTime = cachePreferenceInt.times(1000 * 1000 * 1000L)
+        } catch (exception: NumberFormatException) {
+            exception.printStackTrace()
+        }
+
     }
 
     fun refreshByPassCache() {

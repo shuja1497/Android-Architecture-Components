@@ -91,7 +91,7 @@ class ListFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
         when(item.itemId) {
-            R.id.settings -> {
+            R.id.action_settings -> {
                 view?.let {
                     Navigation.findNavController(it)
                         .navigate(ListFragmentDirections.actionListFragmentToSettingsFragment())

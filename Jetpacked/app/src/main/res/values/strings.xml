@@ -4,4 +4,6 @@
     <string name="list_fragment">List Fragment</string>
     <string name="an_error_occurred_while_loading_data">An error occurred while loading data</string>
     <string name="settings">Settings</string>
+    <string name="send_sms">Send SMS</string>
+    <string name="share">Share</string>
 </resources>

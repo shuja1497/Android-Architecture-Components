@@ -13,6 +13,7 @@ import kotlinx.coroutines.launch
 import sarcastic.cule.jetpacked.model.DogBreed
 import sarcastic.cule.jetpacked.model.DogDatabase
 import sarcastic.cule.jetpacked.model.DogsApiService
+import sarcastic.cule.jetpacked.utils.NotificationHelper
 import sarcastic.cule.jetpacked.utils.SharedPreferenceHelper
 
 class ListViewModel(application: Application) : BaseViewModel(application) {
@@ -64,6 +65,7 @@ class ListViewModel(application: Application) : BaseViewModel(application) {
                     override fun onSuccess(dogsList: List<DogBreed>) {
                         storeDogsLocally(dogsList)
                         Toast.makeText(getApplication(), "Fetched from endpoint", Toast.LENGTH_SHORT).show()
+                        NotificationHelper(getApplication()).createNotification()
                     }
 
                     override fun onError(e: Throwable) {

@@ -33,6 +33,7 @@ class DetailFragment : Fragment() {
     private var uuid = 0
     private lateinit var detailViewModel : DetailViewModel
     private lateinit var dataBinding: FragmentDetailBinding
+    private var smsPermissionStarted = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -103,6 +104,9 @@ class DetailFragment : Fragment() {
         when (item.itemId) {
 
             R.id.action_send_sms -> {
+                smsPermissionStarted = true
+
+                (activity as MainActivity).checkSmsPermission()
 
             }
 
@@ -112,6 +116,10 @@ class DetailFragment : Fragment() {
         }
 
         return super.onOptionsItemSelected(item)
+    }
+
+    fun onPermissionResult(permissionResult: Boolean) {
+
     }
 
 }

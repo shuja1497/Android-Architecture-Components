@@ -123,6 +123,15 @@ class DetailFragment : Fragment() {
 
             R.id.action_share -> {
 
+                val intent = Intent(Intent.ACTION_SEND).apply {
+                    type = "text/plain"
+                }
+
+                intent.putExtra(Intent.EXTRA_SUBJECT, "Checkout this dog")
+                intent.putExtra(Intent.EXTRA_TEXT, " ${currentDog?.breed} bred for ${currentDog?.bredFor} ")
+                intent.putExtra(Intent.EXTRA_STREAM, currentDog?.imageUrl)
+
+                startActivity(Intent.createChooser(intent, "Share with :"))
             }
         }
 
